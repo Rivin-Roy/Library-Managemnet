@@ -1,0 +1,111 @@
+{% include 'staffheader.html'%}
+
+
+
+
+
+        <section id="contact" class="section-padding">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+   
+                                        <h1 style="color:white;font-size: xxx-large;    margin-left: 4em;
+    font-weight: bold">Add Fine</h1>
+
+
+                        <form method="post">
+<center>
+
+
+
+
+<!--         <h1 style="color: white">Manage Books</h1>
+ -->    
+    <table class="table" style="width: 600px ;color: white">
+          <tr>
+            <th>Fine Category</th>
+            <td><select name="fid" required="" class="form-control"> 
+            {%for row in data['cat']%}
+
+              <option value="{{row['fcategory_id']}}">{{row['category']}} </option> 
+              {%endfor%}
+            </select></td>
+        </tr>
+      
+        
+             <tr>
+            <th>Fine Amount</th>
+            <td><input type="text" name="fa" required class="form-control"></td>
+        </tr>
+         
+   
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="ADD"></td>
+        </tr>
+
+    </table>
+    
+    </center>
+</form>
+
+
+
+                                     </div></div></div></section>           
+                   
+<form method="post">
+<center>
+
+
+
+
+  
+    
+
+                <center>
+              <h1 style="color:black;font-size: xxx-large;    margin-left: 1em;
+    font-weight: bold">View Fine</h1>
+    <table class="table" style="width: auto;color: black !important">
+        <tr>
+            
+            <th>Fine Category</th>
+
+
+            <th>Fine Amount</th>
+
+            <!-- <th>Date</th>
+            <th> Status</th> -->
+
+
+
+        </tr>
+        {% for row in data['book']%}
+        <tr>
+        <td>{{row['category']}}</td>
+        <td>{{row['fine_amount']}}</td>
+       <!--  {%if row['status']=="pending"%}
+        <td>
+        <a class="btn btn-warning" href="?action=send&rid={{row['rmaster_id']}}">send </a></td>
+            {%else%}
+                    <td>{{row['status']}}</td>
+                    {%endif%}
+        <td> -->
+        <td>        <a class="btn btn-warning" href="staffviewpayment?rid={{row['rmaster_id']}}">view Payment </a></td>
+
+
+</tr>  
+
+      {%endfor%}
+
+    </table></center>
+              </div>              
+                
+</center>
+</form>
+
+<br><br>  <br>  <br>  <br>  <br>  
+<br><br>  <br>  <br>  <br>  <br>  
+
+
+{% include 'footer.html'%}

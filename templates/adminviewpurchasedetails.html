@@ -1,0 +1,78 @@
+{% include 'admin_header.html'%}
+       
+
+        <section id="contact" class="section-padding">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+   
+
+                                     </div></div></div></section>           
+                   
+    <center>
+      <form method="post">
+<table>
+  <tr>
+    from date:
+    <input type="date" name="sname" class="form-control" style="width: 500px">
+    to date:
+    <input type="date" name="fname" class="form-control" style="width: 500px">
+      <input type="submit" name="search" value="SEARCH" class="btn btn-success">
+    
+  </tr>
+</table>
+</form>
+    <H1 style="color: black">View Purchase Details</H1>
+    <table class="table" style="width: 500px;color: black">
+      <tr>
+            <th>Book</th>
+
+            <th>Publisher</th>
+
+            <th>Amount</th>
+
+            <th>Quantity</th>
+
+            <th>Pur_Date</th>
+
+            <th>Total Amount</th>
+      </tr>
+      {% if data['search'] %}
+      {% for row in data['search']%}
+      <tr>
+        <td>{{row['bname']}}</td>
+      <td>{{row['publisher']}}</td>
+      <td>{{row['amount']}}</td>
+      <td>{{row['quantity']}}</td>
+      <td>{{row['pur_date']}}</td>
+      <td>{{row['total_amount']}}</td>
+      </tr>
+      {%endfor%}
+      {%else%}
+ {% for row in data['view']%}
+      <tr>
+        <td>{{row['bname']}}</td>
+      <td>{{row['publisher']}}</td>
+      <td>{{row['amount']}}</td>
+      <td>{{row['quantity']}}</td>
+      <td>{{row['pur_date']}}</td>
+      <td>{{row['total_amount']}}</td>
+      </tr>
+      {%endfor%}
+      {%endif%}
+      </table>
+    <table>
+      <tr>
+        <td><a class="btn btn-success" href="adminprintpurchase">PRINT</a></td>
+      </tr>
+    </table>
+    </center>
+</form>
+
+
+
+
+                
+
+{% include 'footer.html'%}

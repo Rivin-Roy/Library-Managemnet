@@ -1,0 +1,92 @@
+{% include 'staffheader.html'%}
+
+
+
+
+
+        <section id="contact" class="section-padding">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+   
+                                        <h1 style="color:white;font-size: xxx-large;    margin-left: 4em;
+    font-weight: bold">View Request</h1>
+
+
+                        <!-- <form name="sentMessage" class="contact-form" method="post" novalidate>
+                            <h3>Drop us a line</h3>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls"> -->
+
+                                     </div></div></div></section>           
+                   
+<form method="post">
+<center>
+
+
+
+
+  
+    
+
+                <center>
+    <table class="table" style="width: auto;color: black !important">
+        <tr>
+            
+            <th>Customer Name</th>
+
+
+            <th>Return Date</th>
+
+            <th>Date</th>
+            <th> Status</th>
+
+
+
+        </tr>
+        {% for row in data['book']%}
+        <tr>
+        <td>{{row['first_name']}} {{row['last_name']}}</td>
+        <td>{{row['rdate']}}</td>
+        <td>{{row['date']}}</td>
+        {%if row['status']=="request-send"%}
+        <td>
+        <a class="btn btn-success" href="?action=accept&rid={{row['rmaster_id']}}&bookid={{row['book_id']}}">accept </a></td>
+        <td><a class="btn btn-danger" href="?action=reject&rid={{row['rmaster_id']}}&bookid={{row['book_id']}}">reject</a></td>  
+        {%elif row['status']=="return-pending"%}
+        <td><a class="btn btn-info" href="?action=confirm&rid={{row['rmaster_id']}}&bookid={{row['book_id']}}">confirm return</a></td> 
+    {%elif row['status']=="accept"%}
+        <td><a class="btn btn-danger" href="?action=picked&rid={{row['rmaster_id']}}&bookid={{row['book_id']}}">picked up</a></td>  
+        <td><a class="btn btn-danger" href="?action=dpicked&rid={{row['rmaster_id']}}&bookid={{row['book_id']}}">Didn't picked up</a></td>  
+    {%elif row['status']=="picked"%}
+        <td><a class="btn btn-primary" href="?r_id={{row['rmaster_id']}}">Provide return date </a></td>
+            {%else%}
+                    <td>{{row['status']}}</td>
+                    {%endif%}
+   
+    
+   
+                    <td><a class="btn btn-warning" href="staffviewdetails?rid={{row['rmaster_id']}}">view details </a></td>
+        <td>
+<!--         <a class="btn btn-primary" href="?r_id={{row['rmaster_id']}}">Provide return date </a></td>
+ -->        <!-- <td><a class="btn btn-info" href="staffaddfine?rid={{row['rmaster_id']}}">Add fine </a></td> -->
+
+
+</tr>  
+
+      {%endfor%}
+
+    </table></center>
+              </div>              
+                
+</center>
+</form>
+
+<br><br>  <br>  <br>  <br>  <br>  
+<br><br>  <br>  <br>  <br>  <br>  
+
+
+{% include 'footer.html'%}

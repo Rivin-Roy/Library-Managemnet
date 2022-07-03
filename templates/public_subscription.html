@@ -1,0 +1,64 @@
+{% include 'public_header.html'%}
+
+
+
+ <div class="testimonials parallax-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <div class="flexslider testislider">
+                            <ul class="slides">
+                                <li>
+                                    <div class="slide-items">
+<!--                                         <img src="/static/images/team-1.jpg" alt="">
+ -->                                      
+                            
+                            <br><br><br><br>
+<form method="post">
+<center>
+
+
+
+
+
+
+
+
+</div>
+                                </li>
+                               
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--testimonials-->
+
+              <div class="container" style="margin-top: 2em;margin-bottom: 2em">
+                <center>
+                  <h1 style="color: #000">View Plan</h1>
+    <table class="table" style="width: 1800px;color: #000 !important">
+        <tr>
+            <th>Plan id</th>
+            <th>Plan</th>
+            <th> Amount</th>
+            <th>From Date</th>
+        </tr>
+        {% for row in data['view']%}
+        <tr>
+        <td>Plan{{row['plan_id']}}</td>
+        <td>{{row['plan']}}</td>
+        <td>{{row['amount']}}</td>
+<td><a class="btn btn-warning" href="public_reg_fee?cid={{row['plan_id']}}&amount={{row['amount']}}&plan={{row['plan']}}">Subscribe</a></td>   
+
+
+    </tr>  
+      {%endfor%}
+
+    </table></center>
+              </div>              
+        </form>
+        
+
+{% include 'footer.html'%}

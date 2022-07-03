@@ -1,0 +1,208 @@
+{% include 'admin_header.html'%}
+
+
+
+ <div class="testimonials parallax-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <div class="flexslider testislider">
+                            <ul class="slides">
+                                <li>
+                                    <div class="slide-items">
+<!--                                         <img src="/static/images/team-1.jpg" alt="">
+ -->                                      
+                            
+                            <br><br>
+<form method="post">
+<center>
+
+
+
+
+    {% if data['updatestaff']%}
+ <h1 style="color: white"> Update Add Staff</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+        <tr>
+            <th>First Name</th>
+            <td><input type="text" required="" class="form-control" name="fn"value="{{data['updatestaff'][0]['firstname']}}"></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td><input type="text" required="" class="form-control" name="ln"value="{{data['updatestaff'][0]['lastname']}}"></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td><input type="" name="pl" required="" class="form-control"value="{{data['updatestaff'][0]['place']}}"></td>
+        </tr> 
+         <tr>
+            <th>Dob</th>
+            <td><input type="date" name="d" max="{{ data['today'] }}"  required="" class="form-control"value="{{data['updatestaff'][0]['dob']}}"></td>
+        </tr>
+         <tr>
+            <th>Phone</th>
+            <td><input type="text" required="" pattern="[0-9]{10}" class="form-control" name="ph" pattern="[7-9]{1}[0-9]{9}" value="{{data['updatestaff'][0]['phone']}}"></td>
+         </tr>
+        
+         <tr>
+            <th>House</th>
+            <td><input type="text" required="" class="form-control" name="hn"value="{{data['updatestaff'][0]['house']}}"></td>
+         </tr>
+             <tr>
+            <th>City</th>
+            <td><input type="text" name="c" required class="form-control"value="{{data['updatestaff'][0]['city']}}"></td>
+        </tr>
+          <tr>
+            <th>District</th>
+            <td><input type="text" required="" class="form-control" name="dis"value="{{data['updatestaff'][0]['district']}}"></td>
+         </tr>
+          <tr>
+            <th>Pincode</th>
+            <td><input type="text"  class="form-control" name="pin" required pattern="[0-9]{6}" value="{{data['updatestaff'][0]['pincode']}}"></td>
+         </tr>
+       
+        <tr>
+            <th>Email</th>
+            <td><input type="email" required="" class="form-control" name="em"value="{{data['updatestaff'][0]['email']}}"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="update" value="UPDATE"></td>
+        </tr>
+
+    </table>
+    {%else%}
+        <h1 style="color: white">Add Staff</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+        <tr>
+            <th>First Name</th>
+            <td><input type="text" required="" class="form-control" name="fn"></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td><input type="text" required="" class="form-control" name="ln"></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td><input type="" name="pl" required="" class="form-control"></td>
+        </tr> 
+         <tr>
+            <th>Dob</th>
+            <td><input type="date" name="d" max="{{ data['today'] }}"  required="" class="form-control"></td>
+        </tr>
+         <tr>
+            <th>Phone</th>
+            <td><input type="text" required="" pattern="[0-9]{10}" class="form-control" name="ph" pattern="[7-9]{1}[0-9]{9}"></td>
+         </tr>
+        
+         <tr>
+            <th>House</th>
+            <td><input type="text" required="" class="form-control" name="hn"></td>
+         </tr>
+             <tr>
+            <th>City</th>
+            <td><input type="text" name="c" required class="form-control"></td>
+        </tr>
+          <tr>
+            <th>District</th>
+            <td><input type="text" required="" class="form-control" name="dis"></td>
+         </tr>
+          <tr>
+            <th>Pincode</th>
+            <td><input type="text" required="" class="form-control" name="pin" required pattern="[0-9]{6}"></td>
+         </tr>
+        
+        <tr>
+            <th>Email</th>
+            <td><input type="email" required="" class="form-control" name="em"></td>
+        </tr>
+<tr>
+            <th>password</th>
+            <td><input type="password" required="" class="form-control" name="p" minlength="8" placeholder="Password Must Be Atleast 8 Charecter"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="ADD"></td>
+        </tr>
+
+    </table>
+    {%endif%}
+    
+    </center>
+</form>
+
+
+
+
+
+</div>
+                                </li>
+                               
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--testimonials-->
+
+              <div class="container" style="margin-top: 2em;margin-bottom: 2em">
+                <center>
+                  <h1 style="color: #000">View Staff</h1>
+    <table class="table" style="width: 1800px;color: #000 !important">
+        <tr>
+            <th>  staff id</th>
+            <th>staff Name</th>
+
+
+            <th>Place</th>
+
+            <th>Dob</th>
+
+            <th>Phone</th>
+
+            <th>House</th>
+
+            <th>City</th>
+
+            <th>District</th>
+
+            <th>Pincode</th>
+
+            <th>Email</th>
+           <th> Status</th>
+
+        </tr>
+        {% for row in data['staff']%}
+        <tr>
+            <td>Staff{{row['staff_id']}}</td>
+        <td>{{row['firstname']}} {{row['lastname']}}</td>
+        <td>{{row['place']}}</td>
+        <td>{{row['dob']}}</td>
+        <td>{{row['phone']}}</td>
+        <td>{{row['house']}}</td>
+        <td>{{row['city']}}</td>
+        <td>{{row['district']}}</td>
+        <td>{{row['pincode']}}</td>
+        <td>{{row['email']}}</td>
+ <td><a class="btn btn-warning" href="?action=update&sid={{row['staff_id']}}">update</a></td>    
+
+{%if row['ststatus']=="active"%}
+        <td><a class="btn btn-danger" href="?action=active&sid={{row['staff_id']}}">active</a></td>
+{%elif row['ststatus']=="inactive"%}
+        <td><a class="btn btn-danger" href="?action=inactive&sid={{row['staff_id']}}">inactive</a></td>
+{%else%}
+<td>{{row['ststatus']}}</td>
+{%endif%}
+
+
+       
+    </tr>  
+      {%endfor%}
+
+    </table></center>
+              </div>              
+                
+
+{% include 'footer.html'%}

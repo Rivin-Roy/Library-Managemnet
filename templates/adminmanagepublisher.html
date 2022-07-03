@@ -1,0 +1,171 @@
+{% include 'admin_header.html'%}
+
+
+
+ <div class="testimonials parallax-2" style="height:600px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <div class="flexslider testislider">
+                            <ul class="slides">
+                                <li>
+                                    <div class="slide-items">
+<!--                                         <img src="/static/images/team-1.jpg" alt="">
+ -->                                      
+                            
+<form method="post">
+<center>
+
+
+
+
+    {% if data['updatepublisher']%}
+ <h1 style="color: white"> Update Add Publisher</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+        <tr>
+            <th>Publisher</th>
+            <td><input type="text" required="" class="form-control" name="p"value="{{data['updatepublisher'][0]['publisher']}}"></td>
+        </tr>
+       
+         <tr>
+            <th>Phone</th>
+            <td><input type="text" required="" pattern="[0-9]{10}" class="form-control" name="ph" pattern="[7-9]{1}[0-9]{9}" value="{{data['updatepublisher'][0]['phone']}}"></td>
+         </tr>
+        
+         
+             <tr>
+            <th>City</th>
+            <td><input type="text" name="c" required class="form-control"value="{{data['updatepublisher'][0]['city']}}"></td>
+        </tr>
+          <tr>
+            <th>District</th>
+            <td><input type="text" required="" class="form-control" name="dis"value="{{data['updatepublisher'][0]['district']}}"></td>
+         </tr>
+          <tr>
+            <th>Pincode</th>
+            <td><input type="text" required="" class="form-control" name="pin" required pattern="[0-9]{6}" value="{{data['updatepublisher'][0]['pincode']}}"></td>
+         </tr>
+       
+        <tr>
+            <th>Email</th>
+            <td><input type="email" required="" class="form-control" name="em"value="{{data['updatepublisher'][0]['email']}}"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="update" value="UPDATE"></td>
+        </tr>
+
+    </table>
+    {%else%}
+        <h1 style="color: white">Add Publisher</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+        <tr>
+            <th>Publisher</th>
+            <td><input type="text" required="" class="form-control" name="p"></td>
+        </tr>
+      
+         <tr>
+            <th>Phone</th>
+            <td><input type="text" required="" pattern="[0-9]{10}" class="form-control" name="ph" pattern="[7-9]{1}[0-9]{9}"></td>
+         </tr>
+        
+             <tr>
+            <th>City</th>
+            <td><input type="text" name="c" required class="form-control"></td>
+        </tr>
+          <tr>
+            <th>District</th>
+            <td><input type="text" required="" class="form-control" name="dis"></td>
+         </tr>
+          <tr>
+            <th>Pincode</th>
+            <td><input type="text" required="" class="form-control" name="pin" required pattern="[0-9]{6}"></td>
+         </tr>
+        
+        <tr>
+            <th>Email</th>
+            <td><input type="email" required="" class="form-control" name="em"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="ADD"></td>
+        </tr>
+
+    </table>
+    {%endif%}
+    
+    </center>
+</form>
+
+
+
+
+
+</div>
+                                </li>
+                               
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--testimonials-->
+
+              <div class="container" style="margin-top: 2em;margin-bottom: 2em">
+                <center>
+                  <h1 style="color: #000">View Publisher</h1>
+    <table class="table" style="width: 1800px;color: #000 !important">
+
+        <tr>
+            <th> Publisher_id</th>
+            <th>Email</th>
+
+
+            <th>Publisher</th>
+
+
+            <th>Phone</th>
+
+
+            <th>City</th>
+
+            <th>District</th>
+
+            <th>Pincode</th>
+            <th> Status</th>
+
+
+        </tr>
+        {% for row in data['publisher']%}
+        <tr>
+            <td>Publisher{{row['publisher_id']}}</td>
+
+        <td>{{row['email']}}</td>
+        <td>{{row['publisher']}}</td>
+        <td>{{row['phone']}}</td>
+        <td>{{row['city']}}</td>
+        <td>{{row['district']}}</td>
+        <td>{{row['pincode']}}</td>
+         <td><a class="btn btn-warning" href="?action=update&pid={{row['publisher_id']}}">update</a></td> 
+
+{%if row['pstatus']=="active"%}
+        <td><a class="btn btn-danger" href="?action=active&pid={{row['publisher_id']}}">active</a></td>
+{%elif row['pstatus']=="inactive"%}
+        <td><a class="btn btn-danger" href="?action=inactive&pid={{row['publisher_id']}}">inactive</a></td>   
+{%else%}
+<td>{{row['pstatus']}}</td>
+{%endif%}
+
+
+       
+    </tr>  
+      {%endfor%}
+
+    </table></center>
+              </div>              
+                
+
+{% include 'footer.html'%}

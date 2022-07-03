@@ -1,0 +1,94 @@
+{% include 'staffheader.html'%}
+
+
+
+ <div class="testimonials parallax-2">
+            <div class="container">
+                <div class="data['staff'][0]">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <div class="flexslider testislider">
+                            <ul class="slides">
+                                <li>
+                                    <div class="slide-items">
+<!--                                         <img src="/static/images/team-1.jpg" alt="">
+ -->                                      
+                            
+                            <br><br>
+<form method="post">
+<center>
+
+ <h1 style="color: white"> View Profile</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+        <tr>
+            <th>First Name</th>
+            <td><input type="text" required="" class="form-control" name="fn"value="{{data['staff'][0]['firstname']}}"></td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td><input type="text" required="" class="form-control" name="ln"value="{{data['staff'][0]['lastname']}}"></td>
+        </tr>
+        <tr>
+            <th>Place</th>
+            <td><input type="" name="pl" required="" class="form-control"value="{{data['staff'][0]['place']}}"></td>
+        </tr> 
+         <tr>
+            <th>Dob</th>
+            <td><input type="" name="d"  required="" class="form-control"value="{{data['staff'][0]['dob']}}"></td>
+        </tr>
+         <tr>
+            <th>Phone</th>
+            <td><input type="number" required="" pattern="[0-9]{10}" class="form-control" name="ph"value="{{data['staff'][0]['phone']}}"></td>
+         </tr>
+        
+         <tr>
+            <th>House</th>
+            <td><input type="text" required="" class="form-control" name="hn"value="{{data['staff'][0]['house']}}"></td>
+         </tr>
+             <tr>
+            <th>City</th>
+            <td><input type="text" name="c" required class="form-control"value="{{data['staff'][0]['city']}}"></td>
+        </tr>
+          <tr>
+            <th>District</th>
+            <td><input type="text" required="" class="form-control" name="dis"value="{{data['staff'][0]['district']}}"></td>
+         </tr>
+          <tr>
+            <th>Pincode</th>
+            <td><input type="text" required="" class="form-control" name="pin"value="{{data['staff'][0]['pincode']}}"></td>
+         </tr>
+       
+        <tr>
+            <th>Email</th>
+            <td><input type="email" required="" class="form-control" name="em"value="{{data['staff'][0]['email']}}"></td>
+        </tr>
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="update" value="EDIT"></td>
+        </tr>
+
+    </table>
+
+    
+    </center>
+</form>
+
+
+
+
+
+</div>
+                                </li>
+                               
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--testimonials-->
+
+                      
+                
+
+{% include 'footer.html'%}

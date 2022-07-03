@@ -1,0 +1,70 @@
+{% include 'admin_header.html'%}
+       
+
+        <section id="contact" class="section-padding">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+   
+
+                                     </div></div></div></section>           
+                   
+    <center>
+      <form method="post">
+<table>
+  <tr>
+    from date:
+    <input type="date" name="sname" class="form-control" style="width: 500px">
+    to date:
+    <input type="date" name="fname" class="form-control" style="width: 500px">
+      <input type="submit" name="search" value="SEARCH" class="btn btn-success">
+    
+  </tr>
+</table>
+</form>
+    <H1 style="color: black">View Rent Details</H1>
+    <table class="table" style="width: 500px;color: black">
+      <tr>
+            <th>Book</th>
+
+            <th>Customer</th>
+
+
+            <th>Return Date</th>
+            <th> Date</th>
+      </tr>
+      {% if data['search'] %}
+      {% for row in data['search']%}
+      <tr>
+      <td>{{row['bname']}}</td>
+      <td>{{row['first_name']}} {{row['last_name']}}</td>
+      <td>{{row['rdate']}}</td>
+      <td>{{row['date']}}</td>
+      </tr>
+      {%endfor%}
+      {%else%}
+ {% for row in data['view']%}
+      <tr>
+      <td>{{row['bname']}}</td>
+      <td>{{row['first_name']}} {{row['last_name']}}</td>
+      <td>{{row['rdate']}}</td>
+      <td>{{row['date']}}</td>
+      </tr>
+      {%endfor%}
+      {%endif%}
+      </table>
+    <table>
+      <tr>
+        <td><a class="btn btn-success" href="adminprintrent">PRINT</a></td>
+      </tr>
+    </table>
+    </center>
+</form>
+
+
+
+
+                
+
+{% include 'footer.html'%}

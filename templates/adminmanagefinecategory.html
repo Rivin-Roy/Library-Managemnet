@@ -1,0 +1,121 @@
+{% include 'admin_header.html'%}
+
+
+
+ <div class="testimonials parallax-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <div class="flexslider testislider">
+                            <ul class="slides">
+                                <li>
+                                    <div class="slide-items">
+<!--                                         <img src="/static/images/team-1.jpg" alt="">
+ -->                                      
+                            
+                            <br><br><br><br>
+<form method="post">
+<center>
+
+
+
+
+    {% if data['updatecat']%}
+ <h1 style="color: white"> Update Fine</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+        <tr>
+<!--             <th>Fine Category</th>
+ -->            <td><input type="hidden" value="p" required="" class="form-control" name="fc"value="{{data['updatecat'][0]['category']}}"></td>
+        </tr>
+ <tr>
+            <th>Fine Amount</th>
+            <td><input type="text" required="" class="form-control" name="fa" value="{{data['updatecat'][0]['fine_amount']}}" ></td>
+        </tr> <tr>
+            <th>Month</th>
+            <td><input type="number" required="" min="1" class="form-control" name="m" value="1" readonly ></td>
+        </tr>        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="update" value="UPDATE"></td>
+        </tr>
+
+    </table>
+    {%elif not data['cat'] %}
+        <h1 style="color: white">Add Fine</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+       
+        <tr>
+<!--             <th>Fine Category</th>
+ -->            <td><input type="hidden" value="p" required="" class="form-control" name="fc"></td>
+        </tr>
+         <tr>
+            <th>Fine Amount</th>
+            <td><input type="text" required="" class="form-control" name="fa" ></td>
+        </tr> <tr>
+            <th>Month</th>
+            <td><input type="number" required="" min="1" class="form-control" name="m" value="1" readonly ></td>
+        </tr>
+       
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="ADD"></td>
+        </tr>
+
+    </table>
+    {%endif%}
+    
+    </center>
+</form>
+
+
+
+
+
+</div>
+                                </li>
+                               
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--testimonials-->
+
+              <div class="container" style="margin-top: 2em;margin-bottom: 2em">
+                <center>
+                  <h1 style="color: #000">View Fine Category</h1>
+    <table class="table" style="width: 1800px;color: #000 !important">
+        <tr>
+            <th>Fine Category id</th>
+            <th>Fine Category</th>
+            <th>Fine Amount</th>
+            <th>Month</th>
+            <th>Status</th>
+
+        </tr>
+        {% for row in data['cat']%}
+        <tr>
+        <td>Fine Category{{row['fcategory_id']}}</td>
+        <td>{{row['category']}}</td>
+        <td>{{row['fine_amount']}}</td>
+        <td>{{row['month']}}</td>
+<td><a class="btn btn-warning" href="?action=update&cid={{row['fcategory_id']}}">update</a></td>   
+
+<!-- {%if row['fcstatus']=="active"%}
+        <td><a class="btn btn-danger" href="?action=active&cid={{row['fcategory_id']}}">active</a></td> 
+{% elif row['fcstatus']=="inactive"%}
+<td><a class="btn btn-info" href="?action=inactive&cid={{row['fcategory_id']}}">inactive</a></td>   
+{%else%}
+<td>{{row['fcstatus']}}</td>
+{%endif%} -->
+
+
+        
+    </tr>  
+      {%endfor%}
+
+    </table></center>
+              </div>              
+                
+
+{% include 'footer.html'%}

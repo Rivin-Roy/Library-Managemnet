@@ -1,0 +1,200 @@
+{% include 'admin_header.html'%}
+
+
+
+ <div class="testimonials parallax-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <div class="flexslider testislider">
+                            <ul class="slides">
+                                <li>
+                                    <div class="slide-items">
+<!--                                         <img src="/static/images/team-1.jpg" alt="">
+ -->                                      
+                            
+                            <br><br><br><br>
+<form method="post" enctype="multipart/form-data">
+<center>
+
+
+
+
+     {% if data['updatebook']%}
+ <h1 style="color: white"> Update Add Books</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+         <tr>
+            <th>Language</th>
+            <td><select name="lid" required="" class="form-control"> 
+            {%for row in data['lan']%}
+
+              <option value="{{row['language_id']}}">{{row['language']}} </option> 
+              {%endfor%}
+            </select></td>
+        </tr>
+      
+         <tr>
+            <th>Genre</th>
+                <td><select name="gid" required class="form-control">  
+                              {%for row in data['gen']%}
+
+                 <option value="{{row['genre_id']}}">{{row['genre_name']}} </option> 
+                 {%endfor%}
+            </select></td>         </tr>
+        
+         
+             <tr>
+           <th>Book Name</th>
+            <td><input type="text" name="bn" required class="form-control"value="{{data['updatebook'][0]['bname']}}"></td>
+        </tr>
+          <tr>
+           <th>Author</th>
+            <td><input type="text" required="" class="form-control"  name="a"value="{{data['updatebook'][0]['author']}}"></td>
+         </tr>
+         <tr>
+           <th>Image</th>
+            <td><input type="file" required="" class="form-control"  name="i"value="{{data['updatebook'][0]['image']}}"></td>
+         </tr>
+          <tr>
+             <th>Description</th>
+            <td><input type="text" required="" class="form-control"  name="d"value="{{data['updatebook'][0]['description']}}"></td>
+         </tr>
+       
+        
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="update" value="UPDATE"></td>
+        </tr>
+
+    </table>
+    {%else%}
+        <h1 style="color: white">Add Books</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+          <tr>
+            <th>Language</th>
+            <td><select name="lid" required="" class="form-control"> 
+            {%for row in data['lan']%}
+
+              <option value="{{row['language_id']}}">{{row['language']}} </option> 
+              {%endfor%}
+            </select></td>
+        </tr>
+      
+         <tr>
+            <th>Genre</th>
+                <td><select name="gid" required class="form-control">  
+                              {%for row in data['gen']%}
+
+                 <option value="{{row['genre_id']}}">{{row['genre_name']}} </option> 
+                 {%endfor%}
+            </select></td>         </tr>
+        
+             <tr>
+            <th>Book Name</th>
+            <td><input type="text" name="bn" required class="form-control"></td>
+        </tr>
+          <tr>
+            <th>Author</th>
+            <td><input type="text" required="" class="form-control" name="a"></td>
+         </tr>
+          <tr>
+            <th>Image</th>
+            <td><input type="file" required="" class="form-control" name="i"></td>
+         </tr>
+          <tr>
+            <th>Description</th>
+            <td><input type="text" required="" class="form-control" name="d"></td>
+         </tr>
+        
+   
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="ADD"></td>
+        </tr>
+
+    </table>
+    {%endif%}
+    
+    </center>
+</form>
+
+
+
+
+
+</div>
+                                </li>
+                               
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--testimonials-->
+
+              <div class="container" style="margin-top: 2em;margin-bottom: 2em">
+                <center>
+                  <h1 style="color: #000">View Books</h1>
+    <table class="table" style="width: 1800px;color: #000 !important">
+        <tr>
+          <th>  Book_id</th>
+            <th>Language</th>
+
+
+            <th>Genre</th>
+
+
+            <th>Book Name</th>
+
+
+            <th>Author</th>
+            <th>Image</th>
+             <th>Quantity</th>
+
+            <th>Description</th>
+            <th>  Status</th>
+
+
+
+        </tr>
+        {% for row in data['book']%}
+        <tr>
+            <td>Book{{row['book_id']}}</td>
+
+        <td>{{row['language']}}</td>
+        <td>{{row['genre_name']}}</td>
+        <td>{{row['bname']}}</td>
+        <td>{{row['author']}}</td>
+        <td><img src="/{{row['image']}}" style="width: 100px;height: 100px"></td>
+        <td>{{row['qty']}}</td>
+
+        <td>{{row['description']}}</td>
+ <!--         {% if row['status']=="innactive"%}
+
+<td>{{row['status']}}</td>
+ {% endif%} -->
+
+ <td><a class="btn btn-warning" href="?action=update&bid={{row['book_id']}}">update</a></td> 
+
+ {% if row['status']=="active"%}
+        <td><a class="btn btn-danger" href="?action=active&bid={{row['book_id']}}">active</a></td>  
+ {% elif row['status']=="inactive"%}
+        <td><a class="btn btn-danger" href="?action=inactive&bid={{row['book_id']}}">inactive</a></td>  
+ 
+{%else%}
+<td>{{row['status']}}</td>
+{%endif%}
+
+
+       
+    </tr>  
+      {%endfor%}
+
+    </table></center>
+              </div>              
+                
+
+{% include 'footer.html'%}

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--
+  Bonativo by TEMPLATE STOCK
+  templatestock.co @templatestock
+  Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Library | Management</title>
+
+        <!-- Bootstrap -->
+        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/static/css/style.css" rel="stylesheet" type="text/css">
+        <link href="/static/css/flexslider.css" rel="stylesheet" type="text/css">
+        <link href="/static/icons/css/ionicons.min.css" rel="stylesheet" type="text/css">
+        <link href="/static/icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
+       
+        <!--revolution slider setting css-->
+        <link href="/static/rs-plugin/css/settings.css" rel="stylesheet">
+        <link href="/static/css/prettyPhoto.css" rel="stylesheet" type="text/css" />
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body data-spy="scroll" data-target=".navbar" data-offset="80">
+
+
+        <!-- Static navbar -->
+        <nav class="navbar navbar-default navbar-fixed-top before-color" style="margin-left: 30em">
+            <div class="container" >
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+<!--                     <a class="navbar-brand alo" href="/">Library Management</a>
+ -->                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right scroll-to">
+                        <li class="active"><a href="userhome">Home</a></li>
+                                       
+                       
+             <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">View <span class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="userviewbook">Books</a></li>
+                                <li><a href="userviewrentrequest"> Rent Request</a></li>
+                                <li><a href="userviewprofile"> Profile</a></li>
+                                <li><a href="userviewpayments"> Payment</a></li>
+                                
+                               
+                            
+                            </ul>
+                        </li>
+                        <li><a href="/">logout</a></li>
+
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </nav>
+
+<style type="text/css">
+    
+.testimonials{
+    background: url(/static/images/bg-3.jpg);
+    background-position: 50% 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    vertical-align: middle;
+    z-index: 1;
+    display: block;
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+</style>
+
+
+
+        <section id="contact" class="section-padding">
+            <div class="container" style="margin-right: -24em!important">
+                
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+   
+                                        <h1 style="color:white;font-size: xxx-large;    margin-left:-12em!important;
+    font-weight: bold">View Books</h1>
+
+                 </div></div></div></section>  
+                        <!-- <form name="sentMessage" class="contact-form" method="post" novalidate>
+                            <h3>Drop us a line</h3>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls"> -->
+
+                                             
+
+<form method="post">
+<center>
+
+
+<table class="table" style="width: 500px">
+    <tr>
+        <td><input type="text" name="book"   class="form-control"></td>
+        <td><input type="submit" name="search" value="SEARCH" class="btn btn-info"></td>
+    </tr>
+</table>
+
+  
+    
+
+
+        {%if data['search']%}
+       <div class="container">
+
+        {% for row in data['search']%}
+  <div class="card">
+    <div class="card__header">
+        <td><img src="/{{row['image']}}" height="100" width="500"></td>
+     <!--  <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image" width="600"> -->
+    </div>
+    <div class="card__body">
+       <span class="tag tag-blue"><h5>Language-{{row['language']}}</h5></span>
+      <span class="tag tag-red"><h6>Genre-{{row['genre_name']}}</h6></span>
+      <h4>Book-{{row['bname']}}</h4>
+      <h5>Author-{{row['author']}}</h5>
+      <p>Description-{{row['description']}}</p>
+      <p>Quantity{{row['qty']}}Left</p>
+      {% if row['qty']=="0"%}
+<a class="btn btn-primary" >out of stock</a></td>
+{%else%}
+<a class="btn btn-warning" href="?action=rentrequest&bid={{row['book_id']}}&qty={{row['qty']}}">send rent request</a></td>
+{%endif%}
+
+    </div>
+
+  </div>
+  {% endfor%}
+</div>
+    {%else%}
+    <div class="container">
+
+      {% for row in data['book']%}      
+  <div class="card">
+    <div class="card__header">
+        <td><img src="/{{row['image']}}" height="200" width="300"></td>
+     <!--  <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image" width="600"> -->
+    </div>
+    <div class="card__body">
+      <span class="tag tag-blue"><h5>Language-{{row['language']}}</h5></span>
+      <span class="tag tag-red"><h6>Genre-{{row['genre_name']}}</h6></span>
+      <h4>Book-{{row['bname']}}</h4>
+      <h5>Author-{{row['author']}}</h5>
+      <p>Description-{{row['description']}}</p>
+      <p>Quantity{{row['qty']}}Left</p>
+      {% if row['qty']=="0"%}
+<a class="btn btn-primary" >out of stock</a></td>
+{%else%}
+
+<a class="btn btn-warning" href="?action=rentrequest&bid={{row['book_id']}}&qty={{row['qty']}}">send rent request</a></td>
+{%endif%}
+
+    </div>
+
+  </div>
+  {% endfor%}
+</div>
+     {%endif%} 
+    <!-- </table></center> -->
+              </div>              
+                
+</center>
+</form>
+
+<style type="text/css">
+    @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin-block: 2rem;
+  gap: 2rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: clamp(20rem, calc(20rem + 2vw), 22rem);
+  overflow: hidden;
+  box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+  border-radius: 1em;
+  background: #ECE9E6;
+background: linear-gradient(to right, #FFFFFF, #ECE9E6);
+
+}
+
+
+.card__body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+
+.tag {
+  align-self: flex-start;
+  padding: .25em .75em;
+  border-radius: 1em;
+  font-size: .75rem;
+}
+
+.tag + .tag {
+  margin-left: .5em;
+}
+
+.tag-blue {
+  background: #56CCF2;
+background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+  color: #fafafa;
+}
+
+.tag-brown {
+  background: #D1913C;
+background: linear-gradient(to bottom, #FFD194, #D1913C);
+  color: #fafafa;
+}
+
+.tag-red {
+  background: #cb2d3e;
+background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+  color: #fafafa;
+}
+
+.card__body h4 {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.card__footer {
+  display: flex;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+.user {
+  display: flex;
+  gap: .5rem;
+}
+
+.user__image {
+  border-radius: 50%;
+}
+
+.user__info > small {
+  color: #666;
+}
+
+</style>
+ 
+
+
+
+<br><br>  <br>  <br>  <br>  <br>  
+<br><br>  <br>  <br>  <br>  <br>  
+
+
+{% include 'footer.html'%}

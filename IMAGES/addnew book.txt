@@ -1,0 +1,18 @@
+author: Seyon 
+book:  velu nachiyar penmaiyin paeraanmai(tamil)
+description: This epic novel is all about the never sung warrior in the Indian freedom history, indomitable valour of the Tamil Queen, Velu Nachiyar. 
+She was a ruler of Sivaganga Estate in Tamil Nadu. She and her women warriors sacrificed their lives in the war against the British.
+genre: fiction
+
+book: One Hundred Years of Solitude(spanish)
+author: Gabriel García Márquez
+genre:novel
+description: It  tells the multi-generational story of the Buendía family, whose patriarch, José Arcadio Buendía, founded the (fictitious) town of Macondo. 
+The novel is often cited as one of the supreme achievements in literature.
+
+
+book: The House of the Spirits(spanish)
+author: Isabel Allende
+genre: Magical Realism
+description: The story details the life of the Trueba family, spanning four generations, and tracing the post-colonial social and 
+political upheavals of Chile though the countrys name and the names of figures closely paralleling historical ones, such as the President or the Poet, are never explicitly given. 

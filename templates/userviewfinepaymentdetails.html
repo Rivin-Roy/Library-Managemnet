@@ -1,0 +1,74 @@
+{% include 'userheader.html'%}
+
+
+
+
+
+        <section id="contact" class="section-padding">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3">
+   
+                                        <h1 style="color:white;font-size: xxx-large;    margin-left: 4em;
+    font-weight: bold">View Fine Payment Details</h1>
+
+
+                        <!-- <form name="sentMessage" class="contact-form" method="post" novalidate>
+                            <h3>Drop us a line</h3>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls"> -->
+
+                                     </div></div></div></section>           
+                   
+<form method="post">
+<center>
+
+
+
+
+  
+    
+
+                <center>
+    <table class="table" style="width: auto;color: black !important">
+        <tr>
+            
+            <th>Fine Amount</th>
+
+
+            <th>Return Date</th>
+
+            <th>Date</th>
+            <th> Status</th>
+
+
+
+        </tr>
+        {% for row in data['book']%}
+        <tr>
+        <td>{{row['amount']}}</td>
+        <td>{{row['rdate']}}</td>
+        <td>{{row['date']}}</td>
+        <td>
+        <a class="btn btn-primary" href="userviewdetails?rid={{row['rmaster_id']}}">view details </a></td>
+       <!--  <td>
+        <a class="btn btn-warning" href="userviewfine?rid={{row['rmaster_id']}}">view fine </a></td>
+ -->
+</tr>  
+
+      {%endfor%}
+
+    </table></center>
+              </div>              
+                
+</center>
+</form>
+
+<br><br>  <br>  <br>  <br>  <br>  
+<br><br>  <br>  <br>  <br>  <br>  
+
+
+{% include 'footer.html'%}

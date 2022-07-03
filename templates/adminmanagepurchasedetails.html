@@ -1,0 +1,148 @@
+{% include 'admin_header.html'%}
+
+
+
+ <div class="testimonials parallax-2" style="height:600px">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <div class="flexslider testislider">
+                            <ul class="slides">
+                                <li>
+                                    <div class="slide-items">
+<!--                                         <img src="/static/images/team-1.jpg" alt="">
+ -->     
+
+
+<script type="text/javascript">
+function textChange(){
+    var a=document.getElementById("qty").value;
+    var b=document.getElementById("amm").value;
+    var tot=parseInt(b)*parseInt(a);
+    document.getElementById("total").value=tot;
+
+  }
+  
+</script>
+
+
+
+                            
+<form method="post">
+<center>
+
+
+
+
+   
+        <h1 style="color: white">Add Purchase Details</h1>
+    
+    <table class="table" style="width: 600px ;color: white">
+      <tr>
+            <th>Staff</th>
+            <td><select name="staffid" required="" class="form-control"> 
+            {%for row in data['staff']%}
+
+              <option value="{{row['staff_id']}}">{{row['firstname']}} {{row['lastname']}} </option> 
+              {%endfor%}
+            </select></td>
+        </tr>
+          <tr>
+            <th>Book</th>
+            <td><select name="bid" required="" class="form-control"> 
+            {%for row in data['book']%}
+
+              <option value="{{row['book_id']}}">{{row['bname']}} </option> 
+              {%endfor%}
+            </select></td>
+        </tr>
+      
+         <tr>
+            <th>Publisher</th>
+                <td><select name="pid" required class="form-control">  
+                              {%for row in data['pub']%}
+
+                 <option value="{{row['publisher_id']}}">{{row['publisher']}} </option> 
+                 {%endfor%}
+            </select></td>         </tr>
+        
+             <tr>
+            <th>Amount</th>
+            <td><input type="text" name="amt" id="amm" value="{{data['amm']}}"  required class="form-control"></td>
+        </tr>
+          <tr>
+            <th>Quantity</th>
+            <td><input type="text" required="" id="qty" value="{{data['qty']}}" class="form-control" name="q" onchange="textChange()"></td>
+         </tr>
+          <tr>
+            <th>Pur_Date</th>
+            <td><input type="date" required="" class="form-control" name="d"></td>
+         </tr>
+         <tr>
+            <th>Total Amount</th>
+            <td><input type="text" required="" id="total"  class="form-control" name="t" readonly></td>
+         </tr>
+        
+   
+
+        <tr>
+            <td colspan="2" align="center"><input type="submit" class="btn btn-success" name="add" value="ADD"></td>
+        </tr>
+
+    </table>
+
+    </center>
+
+
+</div>
+                                </li>
+                               
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--testimonials-->
+       
+
+
+    <center>
+
+
+    <H1 style="color: black">View Purchase Details</H1>
+    <table class="table" style="width: 500px;color: black">
+      <tr>
+            <th>Book</th>
+
+            <th>Publisher</th>
+
+            <th>Amount</th>
+
+            <th>Quantity</th>
+
+            <th>Pur_Date</th>
+
+            <th>Total Amount</th>
+      </tr>
+      {% for row in data['view']%}
+      <tr>
+        <td>{{row['bname']}}</td>
+      <td>{{row['publisher']}}</td>
+      <td>{{row['amount']}}</td>
+      <td>{{row['quantity']}}</td>
+      <td>{{row['pur_date']}}</td>
+      <td>{{row['total_amount']}}</td>
+      </tr>
+      {%endfor%}
+    </table>
+    
+    </center>
+</form>
+
+
+
+
+                
+
+{% include 'footer.html'%}
